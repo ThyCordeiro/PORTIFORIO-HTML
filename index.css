@@ -17,12 +17,15 @@ html, body {
   overflow-y: hidden;   /* impede scroll vertical */
   height: 100%;
 }
+
+
 /* Conteúdo */
 .content {
   position: relative;
   z-index: 2;
   color: white;
   text-align: center;
+  height: 100vh;
 }
 h1 {
     position: absolute;
@@ -60,7 +63,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
-
     width: 90%;
     max-width: 600px;
     margin: 0 auto;
@@ -78,4 +80,30 @@ h1 {
 }
 .card:hover {
     background-color: #0055e9;
+}
+
+@keyframes circle-in-center {
+  from {
+    clip-path: circle(0%);
+  }
+  to {
+    clip-path: circle(125%);
+  }
+}
+
+[transition-style="in:square:hesitate"] {
+  animation: 7.5s cubic-bezier(.25, 1, .30, 1) circle-in-center both;
+}
+
+@keyframes wipe-in-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:wipe:up"] {
+  animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-up both;
 }
